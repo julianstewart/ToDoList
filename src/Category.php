@@ -55,6 +55,11 @@
             $GLOBALS['DB']->exec("DELETE FROM categories WHERE id = {$this->getId()};");
         }
 
+        function addTask($task)
+        {
+            $GLOBALS['DB']->exec("INSERT INTO categories_tasks (category_id, task_id) VALUES ({$this->getId()}, {$task->getId()})");
+        }
+
         static function getAll()
         {
             $returned_categories = $GLOBALS['DB']->query("SELECT * FROM categories;");

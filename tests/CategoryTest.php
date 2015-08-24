@@ -86,7 +86,7 @@
             $name2 = "Home stuff";
             $test_Category = new Category($name,$id1);
             $test_Category->save();
-            $id2 = 2
+            $id2 = 2;
             $test_Category2 = new Category($name2,$id2);
             $test_Category2->save();
 
@@ -145,19 +145,25 @@
             $test_category->save();
 
 
+
             $description = "Email the client";
-            $test_task = new Task($description, $id);
+            $id2 = 2;
+            $test_task = new Task($description, $id2);
             $test_task->save();
 
             $description2 = "Meet with boss";
-            $test_task2 = new Task($description2, $id);
+            $id3 = 3;
+            $test_task2 = new Task($description2, $id3);
             $test_task2->save();
 
             //Act
-            $result = $test_category->getTasks();
+            $test_category->addTask($test_task);
+            $test_category->addTask($test_task2);
+
+            var_dump($test_category->getTasks());
 
             //Assert
-            $this->assertEquals([$test_task, $test_task2], $result);
+            $this->assertEquals($test_category->getTasks(), [$test_task,$test_task2]);
         }
 
         function testUpdate()

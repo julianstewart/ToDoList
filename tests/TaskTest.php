@@ -28,7 +28,7 @@
       //Arrange
 
       $name = "Home stuff";
-      $id = null;
+      $id = 1;
       $test_category = new Category($name, $id);
       $test_category->save();
 
