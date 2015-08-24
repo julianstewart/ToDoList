@@ -67,6 +67,27 @@
         $this->assertEquals([$test_task, $test_task2], $result);
     }
 
+    function testDelete()
+    {
+        //Arrange
+        $name = "Work stuff";
+        $id = 1;
+        $test_category = new Category($name, $id);
+        $test_category->save();
+
+        $description = "File reports";
+        $id2 = 2;
+        $test_task = new Task($description, $id2);
+        $test_task->save();
+
+        //Act
+        $test_task->addCategory($test_category);
+        $test_task->delete();
+
+        //Assert
+        $this->assertEquals([], $test_category->getTasks());        
+    }
+
     function test_deleteAll()
     {
         //Arrange
@@ -136,6 +157,55 @@
         $this->assertEquals($test_task, $result);
     }
 
-  }
+    function testAddCategory()
+    {
+
+        //Arrange
+        $name = "Work stuff";
+        $id = 1;
+        $test_category = new Category($name, $id);
+        $test_category->save();
+
+        $description = "File reports";
+        $id2 = 2;
+        $test_task = new Task($description, $id2);
+        $test_task->save();
+
+        //Act
+        $test_task->addCategory($test_category);
+
+        //Assert
+        $this->assertEquals($test_task->getCategories(), [$test_category]);
+
+
+    }//end function
+
+    function testGetCategories()
+    {
+        //Arrange
+        $name = "Home stuff";
+        $id = 1;
+        $test_category = new Category($name, $id);
+        $test_category->save();
+
+        $name2 = "not home stuff";
+        $id2 = 2;
+        $test_category2 = new Category($name, $id2);
+        $test_category2->save();
+
+        $description = "File reports";
+        $id3 = 3;
+        $test_task = new Task($description, $id3);
+        $test_task->save();
+
+        //Act
+        $test_task->addCategory($test_category);
+        $test_task->addCategory($test_category2);
+
+        //Assert
+        $this->assertEquals($test_task->getCategories(),[$test_category,$test_category2]);
+    }
+
+}//end class
 
 ?>

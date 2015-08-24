@@ -160,8 +160,6 @@
             $test_category->addTask($test_task);
             $test_category->addTask($test_task2);
 
-            var_dump($test_category->getTasks());
-
             //Assert
             $this->assertEquals($test_category->getTasks(), [$test_task,$test_task2]);
         }
@@ -187,19 +185,21 @@
         {
             //Arrange
             $name = "Work stuff";
-            $id = null;
+            $id = 1;
             $test_category = new Category($name, $id);
             $test_category->save();
 
-            $name2 = "Home stuff";
-            $test_category2 = new Category ($name2, $id);
-            $test_category2->save();
+            $description = "File reports";
+            $id2 = 2;
+            $test_task = new Task ($description, $id2);
+            $test_task->save();
 
             //Act
+            $test_category->addTask($test_task);
             $test_category->delete();
 
             //Assert
-            $this->assertEquals([$test_category2], Category::getAll());
+            $this->assertEquals([], $test_task->getCategories());
 
         }
 
