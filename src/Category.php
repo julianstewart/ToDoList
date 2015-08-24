@@ -34,12 +34,11 @@
         function getTasks()
         {
             $tasks = Array();
-            $returned_tasks = $GLOBALS['DB']->query("SELECT * FROM tasks WHERE category_id = {$this->getId()}");
+            $returned_tasks = $GLOBALS['DB']->query("SELECT * FROM tasks");
             foreach($returned_tasks as $task) {
                 $description = $task['description'];
                 $id = $task['id'];
-                $category_id = $task['category_id'];
-                $new_task = new Task($description, $id, $category_id);
+                $new_task = new Task($description, $id);
                 array_push($tasks, $new_task);
             }
             return $tasks;
@@ -54,7 +53,6 @@
         function delete()
         {
             $GLOBALS['DB']->exec("DELETE FROM categories WHERE id = {$this->getId()};");
-            $GLOBALS['DB']->exec("DELETE FROM tasks WHERE category_id = {$this->getId()};");
         }
 
         static function getAll()
