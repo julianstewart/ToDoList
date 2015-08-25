@@ -1,8 +1,8 @@
-# _{To Do List}_
+# _To Do List_
 
-##### _{An application that allows the user to add items to a to do list and to completely clear the list if desired}, {August 5th, 2015}_
+##### _An application that allows the user to add items to a to do list and to completely clear the list if desired, 2015.08.25_
 
-#### By _**{Brian Borealis and Julian Stewart}**_
+#### By _**Brian Borealis, Michael Chastain, Julian Stewart**_
 
 ## Description
 
@@ -24,9 +24,7 @@ _{Tell me about the languages you used to create this app. Assume that I know yo
 
 ### Legal
 
-*{This is boilerplate legal language. Read through it, and if you like it, use it. There are other license agreements online, but you can generally copy and paste this.}*
-
-Copyright (c) 2015 **_{List of contribtors}_**
+Copyright (c) 2015 **_Brian Borealis, Michael Chastain, Julian Stewart_**
 
 This software is licensed under the MIT license.
 
